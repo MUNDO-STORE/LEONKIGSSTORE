@@ -9,12 +9,26 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
-                  url('https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      margin: 0;
       color: #fff;
+      overflow-x: hidden;
+    }
+
+    #bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('fundo.jpg') center center / cover no-repeat;
+      z-index: -2;
+    }
+
+    .overlay {
+      background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45));
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
     }
 
     .overlay {
@@ -155,15 +169,66 @@
   </style>
 </head>
 <body>
+  <!-- Vídeo de fundo: Estádio de futebol real -->
+  <!-- Fundo com imagem profissional -->
+  <div id="bg-image"></div>
+
+  <!-- YouTube incorporado para som ambiente -->
   <audio id="stadiumSound" preload="auto" loop>
-    <source src="https://cdn.pixabay.com/audio/2023/03/30/audio_9b8b6b3e2f.mp3" type="audio/mpeg">
+    <source src="estadio.mp3" type="audio/mpeg">
   </audio>
+
+  <div id="sound-btn" onclick="toggleSound()">🔊 Ativar som</div>
+
+  <script>
+    const audio = document.getElementById('stadiumSound');
+    const btn = document.getElementById('sound-btn');
+    let playing = false;
+
+    // Tentativa de autoplay (desktop)
+    window.addEventListener('load', () => {
+      audio.volume = 0.5;
+      audio.play().then(() => {
+        playing = true;
+        btn.innerText = '🔇 Desativar som';
+      }).catch(() => {
+        // Autoplay bloqueado no mobile
+      });
+    });
+
+    // Autoplay no primeiro toque (mobile)
+    function autoPlayOnce() {
+      if (!playing) {
+        audio.volume = 0.5;
+        audio.play();
+        playing = true;
+        btn.innerText = '🔇 Desativar som';
+      }
+      document.removeEventListener('click', autoPlayOnce);
+      document.removeEventListener('touchstart', autoPlayOnce);
+    }
+    document.addEventListener('click', autoPlayOnce);
+    document.addEventListener('touchstart', autoPlayOnce);
+
+    function toggleSound() {
+      if (!playing) {
+        audio.volume = 0.5;
+        audio.play();
+        btn.innerText = '🔇 Desativar som';
+        playing = true;
+      } else {
+        audio.pause();
+        btn.innerText = '🔊 Ativar som';
+        playing = false;
+      }
+    }
+  </script>
 
   <script>
     function playStadium() {
       const audio = document.getElementById('stadiumSound');
       audio.volume = 0.5;
-      audio.play();
+      audio.play().catch(()=>{});
       document.removeEventListener('click', playStadium);
       document.removeEventListener('touchstart', playStadium);
     }
