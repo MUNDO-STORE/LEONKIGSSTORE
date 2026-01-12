@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leonkigs Store | Camisas Tailandesas 1.1</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.35)),
+                  url('https://media.giphy.com/media/26u4cqiYI30juCOGY/giphy.gif');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+
+    .overlay {
+      background: rgba(0,0,0,0.75);
+      min-height: 100vh;
+      padding-bottom: 100px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #00ff88;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 1.2rem;
+      color: #f1f1f1;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .card {
+      background: rgba(20,20,20,0.9);
+      border-radius: 16px;
+      padding: 15px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      padding: 2px;
+      background: linear-gradient(90deg, #00ff88, #00c3ff, #00ff88);
+      background-size: 300% 300%;
+      animation: borderAnim 4s linear infinite;
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    @keyframes borderAnim {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .card span {
+      color: #00ff88;
+      font-weight: bold;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 40px 20px;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #00ff88;
+    }
+
+    .cta p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #000;
+      background: #00ff88;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cta a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #00ff88;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .whatsapp-float a {
+      background: #25d366;
+      color: #fff;
+      padding: 15px 22px;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); }
+      70% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
+      100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+    }
+  </style>
+</head>
+<body>
+  <audio id="stadiumSound" preload="auto" loop>
+    <source src="https://cdn.pixabay.com/audio/2023/03/30/audio_9b8b6b3e2f.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function playStadium() {
+      const audio = document.getElementById('stadiumSound');
+      audio.volume = 0.5;
+      audio.play();
+      document.removeEventListener('click', playStadium);
+      document.removeEventListener('touchstart', playStadium);
+    }
+    document.addEventListener('click', playStadium);
+    document.addEventListener('touchstart', playStadium);
+  </script>
+
+  <div class="overlay">
+    <header>
+      <h1>Leonkigs Store</h1>
+      <p>Camisas de Times • Tailandesas 1.1 • Qualidade Premium</p>
+    </header>
+
+    <section class="products">
+      <div class="card">
+        <img src="barcelona.jpg" alt="Camisa Barcelona" />
+        <h3>Barcelona • Tailandesa 1.1</h3>
+        <p style="font-size:1.2rem;font-weight:bold;color:#00ff88;margin:8px 0;">R$ 120,00 <small style="color:#ccc;">PIX</small></p>
+        <span>Qualidade Premium</span>
+      </div>
+      <div class="card">
+        <img src="corinthias.jpg" alt="Camisa Corinthians" />
+        <h3>Corinthians • Tailandesa 1.1</h3>
+        <p style="font-size:1.2rem;font-weight:bold;color:#00ff88;margin:8px 0;">R$ 120,00 <small style="color:#ccc;">PIX</small></p>
+        <span>Alta Procura</span>
+      </div>
+      <div class="card">
+        <img src="flamengo.jpg" alt="Camisa Flamengo" />
+        <h3>Flamengo • Tailandesa 1.1</h3>
+        <p style="font-size:1.2rem;font-weight:bold;color:#00ff88;margin:8px 0;">R$ 120,00 <small style="color:#ccc;">PIX</small></p>
+        <span>Mais Vendida</span>
+      </div>
+      <div class="card">
+        <img src="ma-city.jpg" alt="Camisa Manchester City" />
+        <h3>Manchester City • Tailandesa 1.1</h3>
+        <p style="font-size:1.2rem;font-weight:bold;color:#00ff88;margin:8px 0;">R$ 120,00 <small style="color:#ccc;">PIX</small></p>
+        <span>Modelo Europeu</span>
+      </div>
+    </section>
+
+    <div class="cta">
+      <h2>Garanta Já a Sua Camisa!</h2>
+      <p>Alta qualidade, visual profissional e envio rápido.</p>
+      <a href="https://wa.link/nqu424" target="_blank">Clique aqui e reserve a sua!</a>
+    </div>
+  </div>
+
+  <div class="whatsapp-float">
+    <a href="https://wa.link/nqu424" target="_blank">📲 Clique aqui e reserve a sua!</a>
+  </div>
+</body>
+</html>
