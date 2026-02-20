@@ -2,344 +2,156 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Leonkigs Store | Camisas Tailandesas Premium 1.1</title>
+  <meta name="description" content="Camisas tailandesas premium 1.1 de times brasileiros e europeus. Qualidade top, preços acessíveis e reserva fácil." />
   <style>
-    * { 
-      box-sizing: border-box; 
-      margin: 0; 
-      padding: 0; 
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
+    body { min-height: 100vh; color: #fff; background: #000; line-height: 1.4; }
 
-    body {
-      min-height: 100vh;
-      margin: 0;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    /* Fundo com imagem */
-    #bg-image {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('fundo.jpg') center center / cover no-repeat;
-      z-index: -2;
-      filter: brightness(0.4);
-    }
+    #bg-image { position: fixed; inset: 0; background: url('fundo.jpg') center/cover no-repeat; filter: brightness(0.4); z-index: -2; }
 
     .overlay {
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(0,0,0,0.88);
       min-height: 100vh;
-      padding-bottom: 120px;
-      position: relative;
-      z-index: 1;
+      padding: 15px 12px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
     }
 
     header {
       text-align: center;
-      padding: 40px 20px 30px;
-      border-bottom: 1px solid rgba(0, 255, 136, 0.2);
-      background: linear-gradient(to bottom, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+      padding: 20px 0 10px;
+      width: 100%;
     }
 
     header h1 {
-      font-size: 3.2rem;
+      font-size: clamp(1.8rem, 7vw, 2.6rem);
       font-weight: 800;
       background: linear-gradient(90deg, #00ff88, #00c3ff);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
+      letter-spacing: 1px;
     }
 
     header p {
-      margin-top: 10px;
-      font-size: 1.3rem;
-      color: #e0e0e0;
-      font-weight: 300;
+      font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+      color: #ddd;
+      margin-top: 4px;
     }
+
+    .logo-video-container {
+      width: 100%;
+      max-width: 220px;
+      margin: 0 auto 15px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,136,0.35);
+    }
+
+    .logo-video-container video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .aviso-reserva {
+      background: rgba(0,255,136,0.10);
+      border: 1px solid #00ff88;
+      border-radius: 12px;
+      padding: 12px 15px;
+      margin: 15px auto 20px;
+      width: 100%;
+      max-width: 700px;
+      text-align: center;
+      font-size: clamp(0.95rem, 3.2vw, 1.05rem);
+    }
+
+    .aviso-reserva h2 {
+      color: #00ff88;
+      font-size: clamp(1.1rem, 4vw, 1.3rem);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .aviso-reserva strong { color: #00ff88; }
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      padding: 40px;
-      max-width: 1300px;
-      margin: 40px auto;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 10px auto;
+      padding: 0 5px;
     }
 
     .card {
-      background: rgba(30, 30, 30, 0.95);
-      border-radius: 20px;
-      padding: 20px;
+      background: rgba(30,30,30,0.92);
+      border-radius: 12px;
+      padding: 10px;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.25s ease;
     }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 255, 136, 0.2);
-    }
-
-    /* Borda animada nas imagens */
-    .card-img-container {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .card-img-container::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 15px;
-      padding: 3px;
-      background: linear-gradient(45deg, #00ff88, #00c3ff, #00ff88, #00c3ff);
-      background-size: 400% 400%;
-      animation: borderSpin 4s linear infinite;
-      z-index: 1;
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-    }
-
-    @keyframes borderSpin {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    .card:hover, .card:active {
+      transform: scale(1.04);
     }
 
     .card img {
       width: 100%;
-      height: 280px;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 12px;
-      transition: transform 0.5s ease;
-    }
-
-    .card:hover img {
-      transform: scale(1.05);
+      border-radius: 8px;
+      margin-bottom: 8px;
+      loading: lazy;
     }
 
     .card h3 {
-      margin: 15px 0 8px;
-      font-size: 1.3rem;
-      color: #fff;
-      font-weight: 600;
+      font-size: clamp(0.9rem, 3.2vw, 1rem);
+      margin: 4px 0 3px;
+      line-height: 1.2;
     }
 
     .price {
       color: #00ff88;
-      font-size: 1.5rem;
+      font-size: clamp(1rem, 3.8vw, 1.15rem);
       font-weight: 700;
-      margin: 10px 0;
-      display: block;
+      margin: 2px 0;
+    }
+
+    .price small {
+      color: #bbb;
+      font-size: 0.75rem;
     }
 
     .tag {
       display: inline-block;
-      background: linear-gradient(90deg, rgba(0,255,136,0.2), rgba(0,195,255,0.2));
+      background: rgba(0,255,136,0.15);
       color: #00ff88;
-      padding: 6px 15px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-top: 10px;
-      border: 1px solid rgba(0, 255, 136, 0.3);
-    }
-
-    /* Notificação em tempo real */
-    .notification-container {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-      width: 320px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .notification {
-      background: rgba(30, 30, 30, 0.95);
-      border-left: 4px solid #00ff88;
-      border-radius: 10px;
-      padding: 15px;
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      animation: slideIn 0.5s ease-out;
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    @keyframes slideIn {
-      from { transform: translateX(100%); opacity: 0; }
-      to { transform: translateX(0); opacity: 1; }
-    }
-
-    .notification-avatar {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #00ff88;
-    }
-
-    .notification-content {
-      flex: 1;
-    }
-
-    .notification-name {
-      font-weight: 600;
-      color: #00ff88;
-      font-size: 1rem;
-    }
-
-    .notification-text {
-      color: #ccc;
-      font-size: 0.9rem;
-      margin-top: 3px;
-    }
-
-    .notification-location {
-      color: #888;
-      font-size: 0.8rem;
-      margin-top: 5px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-
-    /* Seção de Depoimentos */
-    .testimonials {
-      max-width: 1200px;
-      margin: 60px auto;
-      padding: 0 30px;
-    }
-
-    .testimonials h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 40px;
-      color: #00ff88;
-      position: relative;
-      display: inline-block;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .testimonials h2::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 25%;
-      width: 50%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #00ff88, transparent);
-    }
-
-    .testimonials-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
-    }
-
-    .testimonial-card {
-      background: rgba(40, 40, 40, 0.9);
-      border-radius: 15px;
-      padding: 25px;
-      border: 1px solid rgba(0, 255, 136, 0.2);
-      transition: transform 0.3s ease;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-5px);
-      border-color: #00ff88;
-    }
-
-    .testimonial-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
-    }
-
-    .testimonial-avatar {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid #00ff88;
-    }
-
-    .testimonial-info h4 {
-      color: #fff;
-      font-size: 1.1rem;
-      margin-bottom: 5px;
-    }
-
-    .testimonial-location {
-      color: #00ff88;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .social-icons a {
-      color: #ccc;
-      font-size: 0.9rem;
-      transition: color 0.3s;
-    }
-
-    .social-icons a:hover {
-      color: #00ff88;
-    }
-
-    .testimonial-text {
-      color: #ddd;
-      font-style: italic;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-
-    .stars {
-      color: #ffd700;
-      margin: 10px 0;
-      font-size: 1.1rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      margin-top: 4px;
+      border: 1px solid rgba(0,255,136,0.3);
     }
 
     .cta {
       text-align: center;
-      margin: 60px auto;
-      padding: 0 20px;
-      max-width: 800px;
+      margin: 20px auto 40px;
+      width: 100%;
+      max-width: 700px;
     }
 
     .cta h2 {
-      font-size: 2.8rem;
-      margin-bottom: 20px;
+      font-size: clamp(1.6rem, 6vw, 2.2rem);
+      margin-bottom: 8px;
       background: linear-gradient(90deg, #00ff88, #00c3ff);
       -webkit-background-clip: text;
       background-clip: text;
@@ -347,421 +159,117 @@
     }
 
     .cta p {
-      font-size: 1.3rem;
-      margin-bottom: 30px;
+      font-size: clamp(0.95rem, 3.5vw, 1.05rem);
       color: #ccc;
-      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
     .cta a {
       display: inline-block;
-      padding: 18px 40px;
-      font-size: 1.3rem;
+      padding: 12px 28px;
+      font-size: clamp(1rem, 4vw, 1.15rem);
       font-weight: 700;
       color: #000;
       background: linear-gradient(90deg, #00ff88, #00c3ff);
-      border-radius: 50px;
+      border-radius: 40px;
       text-decoration: none;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .cta a::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-      transition: left 0.7s;
-      z-index: -1;
-    }
-
-    .cta a:hover::before {
-      left: 100%;
-    }
-
-    .cta a:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+      box-shadow: 0 6px 20px rgba(0,255,136,0.35);
     }
 
     .whatsapp-float {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      bottom: 16px;
+      right: 16px;
       z-index: 999;
     }
 
     .whatsapp-float a {
       background: linear-gradient(135deg, #25d366, #128C7E);
       color: #fff;
-      padding: 18px 25px;
-      border-radius: 50px;
-      font-size: 1.1rem;
+      padding: 12px 18px;
+      border-radius: 40px;
+      font-size: 0.95rem;
       font-weight: 700;
       text-decoration: none;
-      box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-      animation: pulse 2s infinite;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.45);
       display: flex;
       align-items: center;
-      gap: 10px;
-      transition: transform 0.3s;
+      gap: 6px;
+      min-height: 44px;
     }
 
-    .whatsapp-float a:hover {
-      transform: scale(1.1);
+    @media (min-width: 500px) {
+      .products { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
+      .aviso-reserva { padding: 14px 18px; }
     }
 
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-      70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    @media (min-width: 800px) {
+      .products { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 1100px; }
+      .logo-video-container { max-width: 260px; }
     }
 
-    /* Responsividade */
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.5rem; }
-      .products { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); padding: 20px; }
-      .notification-container { width: 280px; right: 10px; }
-      .testimonials-container { grid-template-columns: 1fr; }
-      .cta h2 { font-size: 2.2rem; }
-    }
-
-    /* Controle de som */
-    .sound-control {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 1000;
-      background: rgba(30, 30, 30, 0.9);
-      border: 1px solid #00ff88;
-      border-radius: 50px;
-      padding: 12px 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #fff;
-      font-weight: 500;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s;
-    }
-
-    .sound-control:hover {
-      background: rgba(0, 255, 136, 0.1);
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
     }
   </style>
 </head>
 <body>
-  <!-- Fundo com imagem -->
   <div id="bg-image"></div>
-
-  <!-- Áudio de ambiente -->
-  <audio id="stadiumSound" autoplay loop>
-    <source src="estadio.mp3" type="audio/mpeg">
-    Seu navegador não suporta o elemento de áudio.
-  </audio>
-
-  <!-- Controle de som -->
-  <div class="sound-control" onclick="toggleSound()">
-    <span id="sound-icon">🔊</span>
-    <span id="sound-text">Som Ativo</span>
-  </div>
-
-  <!-- Container de notificações -->
-  <div class="notification-container" id="notificationContainer"></div>
 
   <div class="overlay">
     <header>
-      <img src="pri.png" alt="Leonkigs Store Logo" style="max-width:200px;margin-bottom:20px;filter:drop-shadow(0 0 15px rgba(0,255,136,0.5));" />
+      <div class="logo-video-container">
+        <video autoplay loop muted playsinline>
+          <source src="02.mp4" type="video/mp4">
+          Seu navegador não suporta vídeo.
+        </video>
+      </div>
       <h1>Leonkigs Store</h1>
-      <p>Camisas de Times • Tailandesas 1.1 • Qualidade Premium • Envio Rápido</p>
+      <p>Camisas de Times • Tailandesas 1.1 • Qualidade Premium • Reserve a Sua</p>
     </header>
+
+    <div class="aviso-reserva">
+      <h2>Ainda estamos com reservas!</h2>
+      <p>Loja física <strong>quase pronta</strong> no <strong>Jardim Atlântico</strong>!</p>
+      <p style="margin-top:6px;">Fale com o vendedor e <strong>reserve agora</strong> sua camisa!</p>
+    </div>
 
     <section class="products">
       <div class="card">
-        <div class="card-img-container">
-          <img src="barcelona.jpg" alt="Camisa Barcelona" />
-        </div>
-        <h3>Barcelona • Tailandesa 1.1</h3>
-        <span class="price">R$ 120,00 <small style="color:#aaa;font-size:0.9rem;">PIX</small></span>
-        <span class="tag">Qualidade Premium</span>
+        <img src="barcelona.jpg" alt="Camisa Barcelona tailandesa 1.1" loading="lazy">
+        <h3>Barcelona</h3>
+        <span class="price">R$ 120 <small>PIX</small></span>
+        <span class="tag">Premium</span>
       </div>
       <div class="card">
-        <div class="card-img-container">
-          <img src="corinthias.jpg" alt="Camisa Corinthians" />
-        </div>
-        <h3>Corinthians • Tailandesa 1.1</h3>
-        <span class="price">R$ 120,00 <small style="color:#aaa;font-size:0.9rem;">PIX</small></span>
+        <img src="corinthias.jpg" alt="Camisa Corinthians tailandesa 1.1" loading="lazy">
+        <h3>Corinthians</h3>
+        <span class="price">R$ 120 <small>PIX</small></span>
         <span class="tag">Alta Procura</span>
       </div>
       <div class="card">
-        <div class="card-img-container">
-          <img src="flamengo.jpg" alt="Camisa Flamengo" />
-        </div>
-        <h3>Flamengo • Tailandesa 1.1</h3>
-        <span class="price">R$ 120,00 <small style="color:#aaa;font-size:0.9rem;">PIX</small></span>
+        <img src="flamengo.jpg" alt="Camisa Flamengo tailandesa 1.1" loading="lazy">
+        <h3>Flamengo</h3>
+        <span class="price">R$ 120 <small>PIX</small></span>
         <span class="tag">Mais Vendida</span>
       </div>
       <div class="card">
-        <div class="card-img-container">
-          <img src="ma-city.jpg" alt="Camisa Manchester City" />
-        </div>
-        <h3>Manchester City • Tailandesa 1.1</h3>
-        <span class="price">R$ 120,00 <small style="color:#aaa;font-size:0.9rem;">PIX</small></span>
-        <span class="tag">Modelo Europeu</span>
-      </div>
-    </section>
-
-    <!-- Seção de Depoimentos -->
-    <section class="testimonials">
-      <h2>Depoimentos de Clientes</h2>
-      <div class="testimonials-container" id="testimonialsContainer">
-        <!-- Os depoimentos serão inseridos via JavaScript -->
+        <img src="ma-city.jpg" alt="Camisa Manchester City tailandesa 1.1" loading="lazy">
+        <h3>Man. City</h3>
+        <span class="price">R$ 120 <small>PIX</small></span>
+        <span class="tag">Europeu</span>
       </div>
     </section>
 
     <div class="cta">
-      <h2>Garanta Já a Sua Camisa!</h2>
-      <p>Alta qualidade, visual profissional, tecido premium e envio rápido para todo Brasil.</p>
-      <a href="https://wa.link/nqu424" target="_blank">🛒 Comprar Agora pelo WhatsApp</a>
+      <h2>Garanta a Sua!</h2>
+      <p>Qualidade premium • Reserva rápida</p>
+      <a href="https://wa.link/v0kdrn" target="_blank">🛒 Comprar pelo WhatsApp</a>
     </div>
   </div>
 
   <div class="whatsapp-float">
-    <a href="https://wa.link/nqu424" target="_blank">📲 Falar com Vendedor</a>
+    <a href="https://wa.link/v0kdrn" target="_blank">📲 Vendedor</a>
   </div>
-
-  <script>
-    // Dados para notificações (apenas Rondonópolis e Pedra Preta)
-    const maleNames = ['Carlos Silva', 'Roberto Santos', 'Miguel Costa', 'André Oliveira', 'Lucas Pereira', 'Pedro Almeida', 'Fernando Souza', 'Rafael Lima'];
-    const femaleNames = ['Ana Santos', 'Juliana Costa', 'Patrícia Oliveira', 'Camila Pereira', 'Beatriz Almeida', 'Maria Souza', 'Carla Lima', 'Fernanda Silva'];
-    const cidades = ['Rondonópolis', 'Pedra Preta']; // Apenas estas duas cidades
-    const products = ['Barcelona', 'Corinthians', 'Flamengo', 'Manchester City'];
-    
-    // URLs de fotos de exemplo (substitua pelas suas)
-    const malePhotos = [
-      'https://randomuser.me/api/portraits/men/32.jpg',
-      'https://randomuser.me/api/portraits/men/44.jpg',
-      'https://randomuser.me/api/portraits/men/67.jpg',
-      'https://randomuser.me/api/portraits/men/22.jpg',
-      'https://randomuser.me/api/portraits/men/55.jpg',
-      'https://randomuser.me/api/portraits/men/78.jpg'
-    ];
-    
-    const femalePhotos = [
-      'https://randomuser.me/api/portraits/women/32.jpg',
-      'https://randomuser.me/api/portraits/women/44.jpg',
-      'https://randomuser.me/api/portraits/women/67.jpg',
-      'https://randomuser.me/api/portraits/women/22.jpg',
-      'https://randomuser.me/api/portraits/women/55.jpg',
-      'https://randomuser.me/api/portraits/women/78.jpg'
-    ];
-
-    // Dados para depoimentos
-    const testimonials = [
-      { name: 'Carlos Silva', city: 'Rondonópolis', gender: 'male', text: 'Qualidade impressionante! A camisa chegou em 3 dias e o tecido é muito bom.', social: { facebook: 'carlos.silva', instagram: '@carlossilva' } },
-      { name: 'Ana Santos', city: 'Pedra Preta', gender: 'female', text: 'Comprei a do Flamengo para meu marido, ele amou! Perfeita.', social: { facebook: 'ana.santos', instagram: '@anasantos' } },
-      { name: 'Roberto Santos', city: 'Rondonópolis', gender: 'male', text: 'Melhor custo-benefício que já vi. Já recomendei para todos os amigos!', social: { facebook: 'roberto.santos', instagram: '@robertosantos' } },
-      { name: 'Juliana Costa', city: 'Pedra Preta', gender: 'female', text: 'Amei minha camisa do Barcelona! O acabamento é perfeito.', social: { facebook: 'juliana.costa', instagram: '@julianacosta' } },
-      { name: 'Miguel Costa', city: 'Rondonópolis', gender: 'male', text: 'Compra segura e produto de qualidade. Vou comprar mais!', social: { facebook: 'miguel.costa', instagram: '@miguelcosta' } },
-      { name: 'Patrícia Oliveira', city: 'Pedra Preta', gender: 'female', text: 'Entregue antes do prazo. Qualidade superior ao preço.', social: { facebook: 'patricia.oliveira', instagram: '@patriciaoliveira' } },
-      { name: 'André Oliveira', city: 'Rondonópolis', gender: 'male', text: 'Produto originalíssimo! Ninguém nota que é tailandesa.', social: { facebook: 'andre.oliveira', instagram: '@andreoliveira' } },
-      { name: 'Camila Pereira', city: 'Pedra Preta', gender: 'female', text: 'Atendimento excelente e produto ainda melhor. Super recomendo!', social: { facebook: 'camila.pereira', instagram: '@camilapereira' } }
-    ];
-
-    // Controles para evitar repetição
-    let usedNotifications = new Set();
-    let usedTestimonials = new Set();
-    let currentTestimonials = [];
-
-    // Sistema de notificações em tempo real
-    function showRandomNotification() {
-      const container = document.getElementById('notificationContainer');
-      const isMale = Math.random() > 0.5;
-      const names = isMale ? maleNames : femaleNames;
-      const photos = isMale ? malePhotos : femalePhotos;
-      
-      let randomName, randomPhoto;
-      let attempts = 0;
-      
-      // Evitar repetição recente
-      do {
-        randomName = names[Math.floor(Math.random() * names.length)];
-        randomPhoto = photos[Math.floor(Math.random() * photos.length)];
-        attempts++;
-      } while (usedNotifications.has(randomName) && attempts < 20);
-      
-      usedNotifications.add(randomName);
-      if (usedNotifications.size > 4) {
-        const first = Array.from(usedNotifications)[0];
-        usedNotifications.delete(first);
-      }
-      
-      const cidade = cidades[Math.floor(Math.random() * cidades.length)]; // Apenas Rondonópolis ou Pedra Preta
-      const product = products[Math.floor(Math.random() * products.length)];
-      const minutes = Math.floor(Math.random() * 10) + 1;
-      
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.innerHTML = `
-        <img src="${randomPhoto}" alt="${randomName}" class="notification-avatar">
-        <div class="notification-content">
-          <div class="notification-name">${randomName}</div>
-          <div class="notification-text">Acabou de comprar a camisa do ${product} • Tailandesa 1.1</div>
-          <div class="notification-location">📍 ${cidade} • Há ${minutes} min</div>
-        </div>
-      `;
-      
-      container.insertBefore(notification, container.firstChild);
-      
-      // Remover após 8 segundos
-      setTimeout(() => {
-        notification.style.animation = 'slideIn 0.5s ease-out reverse';
-        setTimeout(() => notification.remove(), 500);
-      }, 8000);
-      
-      // Limitar a 3 notificações visíveis
-      if (container.children.length > 3) {
-        container.removeChild(container.lastChild);
-      }
-    }
-
-    // Sistema de depoimentos rotativos
-    function updateTestimonials() {
-      const container = document.getElementById('testimonialsContainer');
-      container.innerHTML = '';
-      
-      // Selecionar 5 depoimentos únicos
-      currentTestimonials = [];
-      while (currentTestimonials.length < 5 && currentTestimonials.length < testimonials.length) {
-        const randomIndex = Math.floor(Math.random() * testimonials.length);
-        const testimonial = testimonials[randomIndex];
-        if (!usedTestimonials.has(testimonial.name) && !currentTestimonials.includes(testimonial)) {
-          currentTestimonials.push(testimonial);
-          usedTestimonials.add(testimonial.name);
-        }
-      }
-      
-      // Se usou todos, reinicia
-      if (usedTestimonials.size >= testimonials.length) {
-        usedTestimonials.clear();
-      }
-      
-      // Renderizar depoimentos
-      currentTestimonials.forEach(testimonial => {
-        const photo = testimonial.gender === 'male' 
-          ? malePhotos[Math.floor(Math.random() * malePhotos.length)]
-          : femalePhotos[Math.floor(Math.random() * femalePhotos.length)];
-        
-        const card = document.createElement('div');
-        card.className = 'testimonial-card';
-        card.innerHTML = `
-          <div class="testimonial-header">
-            <img src="${photo}" alt="${testimonial.name}" class="testimonial-avatar">
-            <div class="testimonial-info">
-              <h4>${testimonial.name}</h4>
-              <div class="testimonial-location">
-                <span>📍 ${testimonial.city}</span>
-              </div>
-              <div class="social-icons">
-                <span title="Facebook">fb/${testimonial.social.facebook}</span>
-                <span>•</span>
-                <span title="Instagram">ig/${testimonial.social.instagram}</span>
-              </div>
-            </div>
-          </div>
-          <div class="stars">★★★★★</div>
-          <p class="testimonial-text">"${testimonial.text}"</p>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    // Controle de áudio
-    const audio = document.getElementById('stadiumSound');
-    const soundIcon = document.getElementById('sound-icon');
-    const soundText = document.getElementById('sound-text');
-    let playing = true; // Começa como true porque o áudio está configurado para autoplay
-
-    // Configurar áudio para autoplay
-    function setupAudio() {
-      audio.volume = 0.4; // Volume moderado
-      audio.loop = true;
-      
-      // Tentar tocar automaticamente
-      const playPromise = audio.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          playing = true;
-          soundIcon.textContent = '🔊';
-          soundText.textContent = 'Som Ativo';
-          console.log('Áudio iniciado automaticamente');
-        }).catch(error => {
-          console.log('Autoplay bloqueado, aguardando interação do usuário');
-          playing = false;
-          soundIcon.textContent = '🔇';
-          soundText.textContent = 'Clique para ativar';
-        });
-      }
-    }
-
-    function toggleSound() {
-      if (!playing) {
-        audio.volume = 0.4;
-        audio.play().then(() => {
-          playing = true;
-          soundIcon.textContent = '🔊';
-          soundText.textContent = 'Som Ativo';
-        }).catch(() => {
-          // Autoplay bloqueado
-          soundText.textContent = 'Clique para ativar';
-        });
-      } else {
-        audio.pause();
-        soundIcon.textContent = '🔇';
-        soundText.textContent = 'Som Pausado';
-        playing = false;
-      }
-    }
-
-    // Inicialização
-    window.addEventListener('load', () => {
-      // Configurar áudio
-      setupAudio();
-      
-      // Iniciar notificações a cada minuto
-      showRandomNotification();
-      setInterval(showRandomNotification, 60000);
-      
-      // Inicializar depoimentos
-      updateTestimonials();
-      setInterval(updateTestimonials, 40000);
-      
-      // Mostrar primeira notificação após 2 segundos
-      setTimeout(showRandomNotification, 2000);
-      
-      // Mostrar segunda notificação após 5 segundos
-      setTimeout(showRandomNotification, 5000);
-    });
-
-    // Ativar áudio no primeiro clique (para mobile)
-    document.addEventListener('click', function initAudio() {
-      if (!playing) {
-        audio.volume = 0.4;
-        audio.play().then(() => {
-          playing = true;
-          soundIcon.textContent = '🔊';
-          soundText.textContent = 'Som Ativo';
-        });
-      }
-    }, { once: true }); // Executa apenas uma vez
-  </script>
 </body>
 </html>
