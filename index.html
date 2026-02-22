@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Leonkigs Store | Camisas Tailandesas Premium 1.1</title>
-  <meta name="description" content="Camisas tailandesas premium 1.1 de times brasileiros e europeus. Qualidade top, preços acessíveis e reserva fácil." />
+  <title>Leonkigs Store | Camisas de Times Primeira Linha</title>
+  <meta name="description" content="Camisas de times primeira linha. Qualidade Dry Fit Premium, preços acessíveis e reserva fácil." />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     html, body { height: 100%; margin: 0; padding: 0; overflow-x: hidden; }
@@ -60,12 +60,20 @@
       display: block;
     }
 
+    .whatsapp-info {
+      text-align: center;
+      color: #00ff88;
+      font-weight: bold;
+      font-size: clamp(1rem, 3.8vw, 1.2rem);
+      margin: 10px 0 20px;
+    }
+
     .aviso-reserva {
       background: rgba(0,255,136,0.10);
       border: 1px solid #00ff88;
       border-radius: 12px;
-      padding: 12px 15px;
-      margin: 15px auto 20px;
+      padding: 16px 18px;  /* um pouco mais de padding para acomodar o endereço */
+      margin: 15px auto 25px;
       width: 100%;
       max-width: 700px;
       text-align: center;
@@ -75,7 +83,7 @@
     .aviso-reserva h2 {
       color: #00ff88;
       font-size: clamp(1.1rem, 4vw, 1.3rem);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       text-transform: uppercase;
     }
 
@@ -83,18 +91,18 @@
 
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
       width: 100%;
       max-width: 1000px;
-      margin: 10px auto;
-      padding: 0 5px;
+      margin: 20px auto;
+      padding: 0 10px;
     }
 
     .card {
       background: rgba(30,30,30,0.92);
-      border-radius: 12px;
-      padding: 10px;
+      border-radius: 16px;
+      padding: 12px;
       text-align: center;
       border: 1px solid rgba(255,255,255,0.08);
       transition: transform 0.25s ease;
@@ -108,27 +116,27 @@
       width: 100%;
       aspect-ratio: 3/4;
       object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      border-radius: 12px;
+      margin-bottom: 10px;
       loading: lazy;
     }
 
     .card h3 {
-      font-size: clamp(0.9rem, 3.2vw, 1rem);
+      font-size: clamp(0.95rem, 3.5vw, 1.1rem);
       margin: 4px 0 3px;
       line-height: 1.2;
     }
 
     .price {
       color: #00ff88;
-      font-size: clamp(1rem, 3.8vw, 1.15rem);
+      font-size: clamp(1.1rem, 4vw, 1.25rem);
       font-weight: 700;
       margin: 2px 0;
     }
 
     .price small {
       color: #bbb;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
 
     .tag {
@@ -137,7 +145,7 @@
       color: #00ff88;
       padding: 3px 8px;
       border-radius: 12px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       margin-top: 4px;
       border: 1px solid rgba(0,255,136,0.3);
     }
@@ -199,13 +207,19 @@
     }
 
     @media (min-width: 500px) {
-      .products { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; }
-      .aviso-reserva { padding: 14px 18px; }
+      .products { 
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 18px; 
+      }
+      .aviso-reserva { padding: 18px 20px; }
     }
 
     @media (min-width: 800px) {
-      .products { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); max-width: 1100px; }
-      .logo-video-container { max-width: 260px; }
+      .products { 
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        max-width: 1200px; 
+      }
+      .logo-video-container { max-width: 280px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -225,45 +239,35 @@
         </video>
       </div>
       <h1>Leonkigs Store</h1>
-      <p>Camisas de Times • Tailandesas 1.1 • Qualidade Premium • Reserve a Sua</p>
+      <p>Camisas de Times Primeira Linha • Qualidade Dry Fit Premium • Reserve a Sua</p>
+      <div class="whatsapp-info">NOSSO WHATSAPP (66) 99929-7574</div>
     </header>
 
     <div class="aviso-reserva">
       <h2>Ainda estamos com reservas!</h2>
       <p>Loja física <strong>quase pronta</strong> no <strong>Jardim Atlântico</strong>!</p>
-      <p style="margin-top:6px;">Fale com o vendedor e <strong>reserve agora</strong> sua camisa!</p>
+      <p><strong>Rua Botelho de Oliveira - Casa 32 - Quadra 41</strong></p>
+      <p style="margin-top:8px;">Fale com o vendedor e <strong>reserve agora</strong> sua camisa!</p>
     </div>
 
     <section class="products">
       <div class="card">
-        <img src="barcelona.jpg" alt="Camisa Barcelona tailandesa 1.1" loading="lazy">
-        <h3>Barcelona</h3>
-        <span class="price">R$ 120 <small>PIX</small></span>
-        <span class="tag">Premium</span>
-      </div>
-      <div class="card">
-        <img src="corinthias.jpg" alt="Camisa Corinthians tailandesa 1.1" loading="lazy">
+        <img src="corinthias.jpg" alt="Camisa Corinthians primeira linha" loading="lazy">
         <h3>Corinthians</h3>
-        <span class="price">R$ 120 <small>PIX</small></span>
+        <span class="price">R$ 70,00 <small>PIX</small></span>
         <span class="tag">Alta Procura</span>
       </div>
       <div class="card">
-        <img src="flamengo.jpg" alt="Camisa Flamengo tailandesa 1.1" loading="lazy">
+        <img src="flamengo.jpg" alt="Camisa Flamengo primeira linha" loading="lazy">
         <h3>Flamengo</h3>
-        <span class="price">R$ 120 <small>PIX</small></span>
+        <span class="price">R$ 70,00 <small>PIX</small></span>
         <span class="tag">Mais Vendida</span>
-      </div>
-      <div class="card">
-        <img src="ma-city.jpg" alt="Camisa Manchester City tailandesa 1.1" loading="lazy">
-        <h3>Man. City</h3>
-        <span class="price">R$ 120 <small>PIX</small></span>
-        <span class="tag">Europeu</span>
       </div>
     </section>
 
     <div class="cta">
       <h2>Garanta a Sua!</h2>
-      <p>Qualidade premium • Reserva rápida</p>
+      <p>Qualidade Dry Fit Premium • Reserva rápida</p>
       <a href="https://wa.link/v0kdrn" target="_blank">🛒 Comprar pelo WhatsApp</a>
     </div>
   </div>
